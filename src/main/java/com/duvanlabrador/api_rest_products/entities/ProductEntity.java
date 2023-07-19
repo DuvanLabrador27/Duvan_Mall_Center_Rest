@@ -18,15 +18,20 @@ import java.util.Set;
 public class ProductEntity {
 
     @Id
-    @Column(name = "reference_Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_count")
+    private Long idCount;
+
+    @Column(name = "reference_id", nullable = false, unique = true)
     private String referenceId;
-    @Column(name = "product_name", nullable = false, unique = true)
+
+    @Column(name = "product_name", nullable = false)
     private String productName;
     @Column(name = "fabrication_date", nullable = false, columnDefinition = "DATE")
     private LocalDate fabricationDate;
     @Column(name = "expiration_date", nullable = false, columnDefinition = "DATE")
     private LocalDate expirationDate;
-    @Column(name = "product_price", nullable = false)
+    @Column(name = "product_price", nullable = true)
     private double productPrice;
     @Column(name = "product_stock")
     private Integer productStock;

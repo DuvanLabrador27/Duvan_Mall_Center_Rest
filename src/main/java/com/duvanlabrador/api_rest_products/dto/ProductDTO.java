@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductDTO {
+    private Long idCount;
     private String referenceId;
     private String productName;
     private LocalDate fabricationDate;
