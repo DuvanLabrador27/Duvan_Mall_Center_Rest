@@ -1,5 +1,6 @@
 package com.duvanlabrador.api_rest_products.dto;
 
+import com.duvanlabrador.api_rest_products.entities.CommentsEntity;
 import com.duvanlabrador.api_rest_products.util.ProductCategory;
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
@@ -9,6 +10,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -23,5 +26,6 @@ public class ProductDTO {
     private Integer productStock;
     private ProductCategory productCategory;
     private Boolean productStatus;
+    private Set<CommentsEntity> comments = new HashSet<>();
 
 }

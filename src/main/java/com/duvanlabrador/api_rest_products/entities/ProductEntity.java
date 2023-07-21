@@ -44,8 +44,8 @@ public class ProductEntity {
     @OneToMany(targetEntity = ProductDetailEntity.class, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "productEntity", cascade = CascadeType.ALL)
     private Set<ProductDetailEntity> productDetailEntities = new HashSet<>();
 
-    @OneToMany(targetEntity = CommentsEntity.class, orphanRemoval = true, fetch = FetchType.LAZY, mappedBy = "productEntity", cascade = CascadeType.ALL)
-    private Set<CommentsEntity> commentsEntities = new HashSet<>();
+    @OneToMany(targetEntity = CommentsEntity.class, orphanRemoval = true, mappedBy = "productEntity", cascade = CascadeType.ALL)
+    private Set<CommentsEntity> comments = new HashSet<>();
 
     @ManyToMany(targetEntity = OrderEntity.class, fetch = FetchType.LAZY)
     @JoinTable(name = "product_order", joinColumns = @JoinColumn(name = "reference_Id"), inverseJoinColumns = @JoinColumn(name = "id_order"))

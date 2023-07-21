@@ -6,6 +6,7 @@ import com.duvanlabrador.api_rest_products.repository.ProductRepository;
 import com.duvanlabrador.api_rest_products.util.ProductCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +28,7 @@ public class ProductServiceImpl implements ProductService{
         ProductDTO product = mapToDTO(newProduct);
         return product;
     }
-
+    @Transactional
     @Override
     public List<ProductDTO> getAllProduct() {
         List<ProductEntity> productEntities = productRepository.findAll();
@@ -86,6 +87,7 @@ public class ProductServiceImpl implements ProductService{
         return productEntities.stream().map(category -> mapToDTO(category)).collect(Collectors.toList());
     }
 
+    @Transactional
     public ProductDTO mapToDTO(ProductEntity productEntity){
         ProductDTO productDTO = new ProductDTO();
         productDTO.setIdCount(productEntity.getIdCount());
@@ -97,7 +99,7 @@ public class ProductServiceImpl implements ProductService{
         productDTO.setProductStock(productEntity.getProductStock());
         productDTO.setProductCategory(productEntity.getProductCategory());
         productDTO.setProductStatus(productEntity.getProductStatus());
-
+        productDTO.setComments(productEntity.getComments());
         return productDTO;
     }
 
